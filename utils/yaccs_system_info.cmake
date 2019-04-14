@@ -22,9 +22,9 @@ macro(print_system_value key value)
 endmacro()
 
 
-# print_system_info:
+# yaccs_system_info:
 #   function to output target system details
-function(print_system_info)
+function(yaccs_system_info)
 
     yaccs_status_message("==== System Information ====")
     print_system_value(CMAKE_SYSTEM ${CMAKE_SYSTEM})

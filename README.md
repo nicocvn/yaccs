@@ -73,6 +73,27 @@ In particular, the `yaccs_compiler_paths` can be used to define a list of paths 
 | `yaccs_VS_WINDOWS_TARGET` | Windows deployment target     | 8.1           |
 
 
+## Typical CMakeLists ##
+```
+# CMake minimal version.
+cmake_minimum_required(VERSION 3.13)
+
+# Yaccs.
+include(cmake/yaccs/yaccs.cmake)
+
+# Define project.
+project(AwesomeProj C CXX)
+
+# Set up build tree.
+yaccs_init_build_tree()
+
+# Show configuration.
+yaccs_system_info()
+
+# ...
+
+```
+
 ## Supported configurations ##
 Configuration filenames are defined as `platform_compiler_feature.cmake` where:
 
