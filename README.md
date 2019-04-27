@@ -72,8 +72,13 @@ In particular, the `yaccs_compiler_paths` can be used to define a list of paths 
 | `yaccs_VS_SYSTEM_VERSION` | Windows VS deployment target  | 8.1           |
 | `yaccs_VS_WINDOWS_TARGET` | Windows deployment target     | 8.1           |
 
+### Misc ###
+* [clang-coverage](clang-coverage/) directory provides CMake functions to perform coverage analysis (requires LLVM/Clang toolchain).
 
-## Typical CMakeLists ##
+
+## CMakeLists example ##
+Here is a typical CMakeLists using yaccs:
+
 ```
 # CMake minimal version.
 cmake_minimum_required(VERSION 3.13)
@@ -93,6 +98,12 @@ yaccs_system_info()
 # ...
 
 ```
+
+The choice of a specific configuration is then made in a `yaccs-user-config.cmake` file living next to the CMakeLists.txt file. A few remarks:
+
+* `yaccs_init_build_tree` is a command that sets the build and install tree of the project (see the [script](utils/yaccs_set_build_tree.cmake) for more details).
+* `yaccs_system_info` is a command that display information about the system, compilers, and build mode.
+
 
 ## Supported configurations ##
 Configuration filenames are defined as `platform_compiler_feature.cmake` where:
