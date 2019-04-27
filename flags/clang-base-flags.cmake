@@ -9,6 +9,9 @@
 #
 # MANIFEST:
 #   These are the minimal flags for clang, covering all build types.
+#   Note that, Clang does not provide an equivalent to Os, so 02 is used.
+#   Ref: http://lists.llvm.org/pipermail/llvm-bugs/2018-January/061981.html
+#   Ref: https://github.com/android-ndk/ndk/issues/721
 #
 # ---------------------------------------------------------------------------- #
 
@@ -55,7 +58,7 @@ set(yaccs_C_DEBUG_FLAGS
     -Wconversion
     -Wreturn-type
     # Optimization.
-    -O1
+    -O0
     )
 
 # C++ debug flags.
@@ -77,7 +80,7 @@ set(yaccs_CXX_DEBUG_FLAGS
     -Wreturn-type
     -Weffc++
     # Optimization.
-    -O1
+    -O0
     )
 
 # Linker debug flags.
@@ -139,7 +142,7 @@ set(yaccs_C_MINSIZEREL_FLAGS
     # Architecture.
     -mfpmath=sse
     # Optimization.
-    -Os
+    -O2
     -DNDEBUG
     )
 
@@ -149,7 +152,7 @@ set(yaccs_CXX_MINSIZEREL_FLAGS
     # Architecture.
     -mfpmath=sse
     # Optimization.
-    -Os
+    -O2
     -DNDEBUG
     )
 
