@@ -123,7 +123,7 @@ Yaccs provides configurations for the GCC ARM Embedded Toolchain and supports Co
 * [cortex-m_gcc-arm_m4_cxx14](cortex-m_gcc-arm_m4_cxx14.cmake)
 
 ### macOS ###
-Yaccs provides configurations for macOS that supports AppleClang, GCC-8, and Clang-8.
+Yaccs provides configurations for macOS that supports AppleClang, GCC-8, GCC-9, and Clang-8.
 
 * [macos_apple-clang_cxx11](macos_apple-clang_cxx11.cmake)
 * [macos_apple-clang_cxx14](macos_apple-clang_cxx14.cmake)
@@ -133,9 +133,13 @@ Yaccs provides configurations for macOS that supports AppleClang, GCC-8, and Cla
 * [macos_gcc-8_cxx11_static](macos_gcc-8_cxx11_static.cmake)
 * [macos_gcc-8_cxx14](macos_gcc-8_cxx14.cmake)
 * [macos_gcc-8_cxx14_static](macos_gcc-8_cxx14_static.cmake)
+* [macos_gcc-9_cxx11](macos_gcc-9_cxx11.cmake)
+* [macos_gcc-9_cxx11_static](macos_gcc-9_cxx11_static.cmake)
+* [macos_gcc-9_cxx14](macos_gcc-9_cxx14.cmake)
+* [macos_gcc-9_cxx14_static](macos_gcc-9_cxx14_static.cmake)
 
 ### Linux ###
-Yaccs provides configurations for macOS that supports GCC-8, and Clang-8.
+Yaccs provides configurations for Linux that supports Clang-8, GCC-8, and GCC-9.
 
 * [linux_clang-8_cxx11](linux_clang-8_cxx11.cmake)
 * [linux_clang-8_cxx11_rtlib](linux_clang-8_cxx11_rtlib.cmake)
@@ -149,9 +153,13 @@ Yaccs provides configurations for macOS that supports GCC-8, and Clang-8.
 * [linux_gcc-8_cxx11_static](linux_gcc-8_cxx11_static.cmake)
 * [linux_gcc-8_cxx14](linux_gcc-8_cxx14.cmake)
 * [linux_gcc-8_cxx14_static](linux_gcc-8_cxx14_static.cmake)
+* [linux_gcc-9_cxx11](linux_gcc-9_cxx11.cmake)
+* [linux_gcc-9_cxx11_static](linux_gcc-9_cxx11_static.cmake)
+* [linux_gcc-9_cxx14](linux_gcc-9_cxx14.cmake)
+* [linux_gcc-9_cxx14_static](linux_gcc-9_cxx14_static.cmake)
 
 #### Remarks ####
 
-* When using static build with gcc-8, the Debug build type will fail to compile due to the presence of the sanitizers options (which are not available as static libraries).
+* When using static build with GCC, the Debug build type will fail to compile due to the presence of the sanitizers options (which are not available as static libraries).
 * When building with clang (in non static mode), it is required to set `LD_LIBRARY_PATH` to the location of the shared libraries of the clang toolchain (or to adjust the build products rpath).
 * In general, when using static build and static linking it might be required to adjust the libraries being linked.
