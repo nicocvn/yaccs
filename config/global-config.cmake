@@ -35,4 +35,5 @@ set(yaccs_VS_SYSTEM_VERSION "8.1"
     CACHE STRING "Windows system version for VS deployment target")
 set(yaccs_VS_WINDOWS_TARGET "8.1"
     CACHE STRING "Visual Studio deployment target")
-
+set(yaccs_VS_PLATFORM "x64"
+    CACHE STRING "Visual Studio platform")

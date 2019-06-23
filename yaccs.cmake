@@ -21,7 +21,7 @@ set(__yaccs_main_guard 1)
 
 
 # Version
-set("yaccs_VERSION" "0.1" CACHE STRING "yaccs version" FORCE)
+set("yaccs_VERSION" "2.0" CACHE STRING "yaccs version" FORCE)
 
 
 # Store script location.
@@ -35,7 +35,8 @@ include(${_yaccs_main_dir}/utils/yaccs_cortex_flags_loader.cmake)
 include(${_yaccs_main_dir}/utils/yaccs_std_cxx_loader.cmake)
 include(${_yaccs_main_dir}/utils/yaccs_system_info.cmake)
 include(${_yaccs_main_dir}/utils/yaccs_update_cache_var.cmake)
-include(${_yaccs_main_dir}/utils/yaccs_set_build_tree.cmake)
+include(${_yaccs_main_dir}/utils/yaccs_init_build_tree.cmake)
+include(${_yaccs_main_dir}/utils/yaccs_utils.cmake)
 
 
 # Init.

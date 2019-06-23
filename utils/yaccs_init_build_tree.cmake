@@ -16,22 +16,6 @@
 # BUILD_DIR and INSTALL_DIR can be defined by the user to use custom locations.
 function(yaccs_init_build_tree)
 
-    # Set configuration types.
-    set(CMAKE_CONFIGURATION_TYPES "Debug;Release;RelWithDebInfo;MinSizeRel"
-        CACHE STRING "" FORCE)
-
-    # Default build type is Debug.
-    if(NOT CMAKE_BUILD_TYPE)
-        yaccs_status_message("Defaulting build type to Debug")
-        set(CMAKE_BUILD_TYPE "Debug" CACHE STRING "" FORCE)
-    endif()
-
-    # Set some helper text for the GUI.
-    set_property(CACHE CMAKE_BUILD_TYPE
-                 PROPERTY HELPSTRING "Choose the type of build")
-    set_property(CACHE CMAKE_BUILD_TYPE
-                 PROPERTY STRINGS "Debug;Release;RelWithDebInfo;MinSizeRel")
-
     # Set the build location.
     # The double set calls are required due to some global/local conflicts.
     if(BUILD_DIR)
