@@ -74,7 +74,7 @@ function(create_clang_cov_targers_for)
 
     # Define function interface.
     set(options "")
-    set(one_value_args TARGET)
+    set(one_value_args TARGET HTML_DIR)
     set(multi_value_args DEPS)
 
     # Parse arguments.
@@ -86,6 +86,7 @@ function(create_clang_cov_targers_for)
     # Shorthands.
     set(covTarget ${clang_cov_args_TARGET})
     set(llvmBinDir ${_clang_path})  # This comes from the compiler support.
+    set(htmlDir ${clang_cov_args_HTML_DIR})
 
     # Check if target is valid.
     if(NOT TARGET ${covTarget})
@@ -135,12 +136,12 @@ function(create_clang_cov_targers_for)
 
     # Coverage HTML report target.
     add_custom_target(${covTarget}-cov-html
-                      COMMAND ${llvmBinDir}/llvm-cov show $<TARGET_FILE_NAME:${covTarget}> ${object_opts} -instr-profile=${covTarget}.profdata -show-line-counts-or-regions -output-dir=${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${covTarget}-cov-html -format="html"
+                      COMMAND ${llvmBinDir}/llvm-cov show $<TARGET_FILE_NAME:${covTarget}> -object ${object_opts} -instr-profile=${covTarget}.profdata -show-line-counts-or-regions -output-dir=${htmlDir}/${covTarget}-cov-html -format="html"
                       WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
                       DEPENDS ${covTarget}-cov-preprocessing)
     add_custom_command(TARGET ${covTarget}-cov-html POST_BUILD
         COMMAND ;
-        COMMENT "Open ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${covTarget}-cov-html/index.html in your browser to view the coverage report.")
+        COMMENT "Open ${htmlDir}/${covTarget}-cov-html/index.html in your browser to view the coverage report.")
     message(STATUS "(clang-cov) Coverage html report target ${covTarget}-cov-html created")
 
 endfunction()

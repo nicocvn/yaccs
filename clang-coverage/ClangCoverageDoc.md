@@ -16,7 +16,7 @@ yaccs_init_build_tree()
 include(cmake/yaccs/clang-coverage/enable-clang-coverage.cmake)
 
 add_executable(my_exec some.cpp)
-create_clang_cov_targers_for(TARGET my_exec)
+create_clang_cov_targers_for(TARGET my_exec HTML_DIR ${CMAKE_BINARY_DIR})
 ```
 
 The CMake module will add the Coverage build type using the settings of the Debug type. This additional build type enables code coverage based on Clang. The function `create_clang_cov_targers_for(TARGET target)` can then be used to create the following targets:
@@ -24,7 +24,7 @@ The CMake module will add the Coverage build type using the settings of the Debu
 * `target`-cov-preprocessing: internal target that will run the target build product and collect coverage information,
 * `target`-cov-show: target that will output coverage line counts in the console side-by-side with analyzed source files,
 * `target`-cov-report: target that will output the code coverage statistics for all file,
-* `target`-cov-html: target that will create a HTML coverage report.
+* `target`-cov-html: target that will create a HTML coverage report (the `HTML_DIR` parameter controls where the HTML report is generated).
 
 If the target depends on shared libraries and coverage analysis is needed for these as well the `DEPS` parameter should be used:
 
