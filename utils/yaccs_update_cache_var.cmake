@@ -40,7 +40,7 @@ function(yaccs_update_cache_var var_name value)
 
     # Store the value in the variable.
     # If the variable currently holds nothing we avoid the extra whitespace.
-    string(COMPARE EQUAL "" "${${var_name}}" var_empty)
+    string(COMPARE EQUAL "" "${${var_name}}" is_empty)
     if(is_empty)
         set("${var_name}" "${value}" CACHE STRING "" FORCE)
     else()

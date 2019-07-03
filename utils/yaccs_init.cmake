@@ -21,6 +21,24 @@ set(__yaccs_init_guard 1)
 set(_yaccs_init_dir "${CMAKE_CURRENT_LIST_DIR}")
 
 
+# Set some helper text for the GUI.
+set_property(CACHE CMAKE_BUILD_TYPE
+             PROPERTY HELPSTRING "Choose the type of build")
+set_property(CACHE CMAKE_BUILD_TYPE
+             PROPERTY STRINGS "Debug;Release;RelWithDebInfo;MinSizeRel")
+
+# Set configuration types.
+set(CMAKE_CONFIGURATION_TYPES "Debug;Release;RelWithDebInfo;MinSizeRel"
+    CACHE STRING "" FORCE)
+
+# Default build type is Debug.
+if(NOT CMAKE_BUILD_TYPE)
+    yaccs_status_message("Defaulting build type to Debug")
+    set(CMAKE_BUILD_TYPE "Debug" CACHE STRING
+        "Build type" FORCE)
+endif()
+
+
 # Global configuration.
 include(${_yaccs_main_dir}/config/global-config.cmake)
 
@@ -34,3 +52,8 @@ set(CMAKE_C_STANDARD_REQUIRED ON
 # Set option for C++ extensions.
 set(CMAKE_CXX_EXTENSIONS OFF
     CACHE STRING "Enable C++ extensions" FORCE)
+
+
+# Enable compilation database.
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON
+    CACHE STRING "Enable compilation database" FORCE)

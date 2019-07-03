@@ -1,4 +1,0 @@
-./@Executable@
-mv default.profraw @Executable@.profraw
-@llvm-dir@/llvm-profdata merge -o @Executable@.profdata @Executable@.profraw
-@llvm-dir@/llvm-cov report @Executable@ -instr-profile=@Executable@.profdata
