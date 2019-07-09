@@ -21,12 +21,6 @@ set(__yaccs_init_guard 1)
 set(_yaccs_init_dir "${CMAKE_CURRENT_LIST_DIR}")
 
 
-# Set some helper text for the GUI.
-set_property(CACHE CMAKE_BUILD_TYPE
-             PROPERTY HELPSTRING "Choose the type of build")
-set_property(CACHE CMAKE_BUILD_TYPE
-             PROPERTY STRINGS "Debug;Release;RelWithDebInfo;MinSizeRel")
-
 # Set configuration types.
 set(CMAKE_CONFIGURATION_TYPES "Debug;Release;RelWithDebInfo;MinSizeRel"
     CACHE STRING "" FORCE)
@@ -37,6 +31,13 @@ if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "Debug" CACHE STRING
         "Build type" FORCE)
 endif()
+
+
+# Set some helper text for the GUI.
+set_property(CACHE CMAKE_BUILD_TYPE
+             PROPERTY HELPSTRING "Choose the type of build")
+set_property(CACHE CMAKE_BUILD_TYPE
+             PROPERTY STRINGS "Debug;Release;RelWithDebInfo;MinSizeRel")
 
 
 # Global configuration.
