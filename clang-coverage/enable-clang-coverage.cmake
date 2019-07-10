@@ -49,8 +49,6 @@ yaccs_update_cache_var(CMAKE_CXX_FLAGS_COVERAGE "-fcoverage-mapping")
 # Add linker flags.
 yaccs_update_cache_var(CMAKE_EXE_LINKER_FLAGS_COVERAGE
                        "-fprofile-instr-generate")
-yaccs_update_cache_var(CMAKE_STATIC_LINKER_FLAGS_COVERAGE
-                       "-fprofile-instr-generate")
 yaccs_update_cache_var(CMAKE_SHARED_LINKER_FLAGS_COVERAGE
                        "-fprofile-instr-generate")
 
@@ -64,7 +62,7 @@ yaccs_update_cache_var(CMAKE_SHARED_LINKER_FLAGS_COVERAGE
 # This function creates the following target (XXX stands for the TARGET name:
 # - XXX-cov-preprocessing:
 #     run the target and collect coverage information
-# - XXX-cov-show: 
+# - XXX-cov-show:
 #     show coverage line counts stats in the console
 # - XXX-cov-report:
 #     show coverage report in the console
@@ -74,7 +72,7 @@ function(create_clang_cov_targers_for)
 
     # Define function interface.
     set(options "")
-    set(one_value_args TARGET HTML_DIR)
+    set(one_value_args TARGET HTML_DIR EXCLUDE_REGEX)
     set(multi_value_args DEPS)
 
     # Parse arguments.
@@ -98,11 +96,18 @@ function(create_clang_cov_targers_for)
     foreach(dep IN LISTS clang_cov_args_DEPS)
         string(COMPARE EQUAL "" "${object_opts}" is_empty)
         if (is_empty)
-            set(object_opts "$<TARGET_FILE_NAME:${dep}>")
+            set(object_opts "-object $<TARGET_FILE_NAME:${dep}>")
         else()
             set(object_opts "${object_opts},$<TARGET_FILE_NAME:${dep}>")
         endif()
     endforeach(dep)
+
+    # Build exclude list.
+    set(exclude_opts "")
+    string(COMPARE EQUAL "" "${clang_cov_args_EXCLUDE_REGEX}" is_empty)
+    if (NOT is_empty)
+        set(exclude_opts "-ignore-filename-regex=\"${clang_cov_args_EXCLUDE_REGEX}\"")
+    endif()
 
     # Update target compile and link flags for coverage.
     set_target_properties(${covTarget}
@@ -121,7 +126,8 @@ function(create_clang_cov_targers_for)
 
     # Coverage show target.
     add_custom_target(${covTarget}-cov-show
-                      COMMAND ${llvmBinDir}/llvm-cov show $<TARGET_FILE_NAME:${covTarget}> ${object_opts} -instr-profile=${covTarget}.profdata -show-line-counts-or-regions
+                      COMMAND ${llvmBinDir}/llvm-cov show
+                      $<TARGET_FILE_NAME:${covTarget}> -instr-profile=${covTarget}.profdata -show-line-counts-or-regions ${object_opts} ${exclude_opts}
                       WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
                       DEPENDS ${covTarget}-cov-preprocessing)
     message(STATUS "(clang-cov) Coverage show target ${covTarget}-cov-show created")
@@ -129,19 +135,19 @@ function(create_clang_cov_targers_for)
     # Coverage report target.
     add_custom_target(${covTarget}-cov-report
                       COMMAND echo ${object_opts}
-                      COMMAND ${llvmBinDir}/llvm-cov report $<TARGET_FILE_NAME:${covTarget}> -object ${object_opts} -instr-profile=${covTarget}.profdata
+                      COMMAND ${llvmBinDir}/llvm-cov report $<TARGET_FILE_NAME:${covTarget}> -instr-profile=${covTarget}.profdata ${object_opts} ${exclude_opts}
                       WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
                       DEPENDS ${covTarget}-cov-preprocessing)
     message(STATUS "(clang-cov) Coverage report target ${covTarget}-cov-report created")
 
     # Coverage HTML report target.
     add_custom_target(${covTarget}-cov-html
-                      COMMAND ${llvmBinDir}/llvm-cov show $<TARGET_FILE_NAME:${covTarget}> -object ${object_opts} -instr-profile=${covTarget}.profdata -show-line-counts-or-regions -output-dir=${htmlDir}/${covTarget}-cov-html -format="html"
+                      COMMAND ${llvmBinDir}/llvm-cov show $<TARGET_FILE_NAME:${covTarget}> -instr-profile=${covTarget}.profdata -show-line-counts-or-regions -output-dir=${htmlDir}/${covTarget}-cov-html -format="html" ${object_opts} "${exclude_opts}"
                       WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
                       DEPENDS ${covTarget}-cov-preprocessing)
     add_custom_command(TARGET ${covTarget}-cov-html POST_BUILD
-        COMMAND ;
-        COMMENT "Open ${htmlDir}/${covTarget}-cov-html/index.html in your browser to view the coverage report.")
+                       COMMAND ;
+                       COMMENT "Open ${htmlDir}/${covTarget}-cov-html/index.html in your browser to view the coverage report.")
     message(STATUS "(clang-cov) Coverage html report target ${covTarget}-cov-html created")
 
 endfunction()

@@ -34,3 +34,5 @@ add_executable(my_exec some.cpp)
 target_link_libraries(my_exec my_lib)
 create_clang_cov_targers_for(TARGET my_exec DEPS my_lib)
 ```
+
+Finally, the parameter `EXCLUDE_REGEX` can be used to pass a regular expression that matches directories and files to be excluded from the coverage analysis.
