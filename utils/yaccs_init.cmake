@@ -32,7 +32,6 @@ if(NOT CMAKE_BUILD_TYPE)
         "Build type" FORCE)
 endif()
 
-
 # Set some helper text for the GUI.
 set_property(CACHE CMAKE_BUILD_TYPE
              PROPERTY HELPSTRING "Choose the type of build")
