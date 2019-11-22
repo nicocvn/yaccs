@@ -4,15 +4,20 @@ This is the changelog for the yaccs project. All notable changes to the project 
 
 ## Unreleased
 ### Added
-- Add an option to define the CMake build type for the Clang-based coverage analysis.
-
 ### Changed
-- Change handling of LTO settings on only enable LTO for Release and MinSizeRel CMake build types (to avoid issues in debugging).
-
 ### Deprecated
 ### Removed
 ### Fixed
 ### Security
+
+
+## 2.2.0 - 2019-11-22
+
+### Added
+- Add an option to define the CMake build type for the Clang-based coverage analysis.
+
+### Changed
+- Change handling of LTO settings and only enable LTO for Release and MinSizeRel CMake build types (mitigate issues during debugging in Debug mode).
 
 
 ## 2.1 - 2019-07-10
