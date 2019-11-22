@@ -16,7 +16,7 @@
 #   - Enable LTO
 #   - Enable address, undefined behavior, and leak sanitizers for Debug build
 #     type
-#   
+#
 #   This configuration is equivalent to a "standard" macOS configuration with
 #   clang-8 as the compiler.
 #

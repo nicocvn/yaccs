@@ -27,17 +27,24 @@ set(CMAKE_CONFIGURATION_TYPES "${CMAKE_CONFIGURATION_TYPES};Coverage"
     CACHE STRING "" FORCE)
 
 
+set(BuildType "DEBUG")
+if(ClangCoverageBuildType)
+  string(TOUPPER ${ClangCoverageBuildType} BuildType)
+endif()
+message(STATUS "(clang-cov) Using build type ${BuildType} for coverage")
+
+
 # Set flags for the Coverage type using the current Debug flags.
 yaccs_set_cache_var_from_list(CMAKE_C_FLAGS_COVERAGE
-                              "${CMAKE_C_FLAGS_DEBUG}")
+                              "${CMAKE_C_FLAGS_${BuildType}}")
 yaccs_set_cache_var_from_list(CMAKE_CXX_FLAGS_COVERAGE
-                              "${CMAKE_CXX_FLAGS_DEBUG}")
+                              "${CMAKE_CXX_FLAGS_${BuildType}}")
 yaccs_set_cache_var_from_list(CMAKE_EXE_LINKER_FLAGS_COVERAGE
-                              "${CMAKE_EXE_LINKER_FLAGS_DEBUG}")
+                              "${CMAKE_EXE_LINKER_FLAGS_${BuildType}}")
 yaccs_set_cache_var_from_list(CMAKE_STATIC_LINKER_FLAGS_COVERAGE
-                              "${CMAKE_STATIC_LINKER_FLAGS_DEBUG}")
+                              "${CMAKE_STATIC_LINKER_FLAGS_${BuildType}}")
 yaccs_set_cache_var_from_list(CMAKE_SHARED_LINKER_FLAGS_COVERAGE
-                              "${CMAKE_SHARED_LINKER_FLAGS_DEBUG}")
+                              "${CMAKE_SHARED_LINKER_FLAGS_${BuildType}}")
 
 
 # Add the clang coverage flags for compilers.
