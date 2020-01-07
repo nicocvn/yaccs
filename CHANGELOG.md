@@ -4,6 +4,8 @@ This is the changelog for the yaccs project. All notable changes to the project 
 
 ## Unreleased
 ### Added
+- Add a CMake option to disable LTO for GCC ARM Embedded configurations.
+
 ### Changed
 ### Deprecated
 ### Removed
