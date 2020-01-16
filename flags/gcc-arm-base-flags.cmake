@@ -32,6 +32,7 @@ set(yaccs_C_COMMON_FLAGS
     -funsigned-char
     -fomit-frame-pointer
     -fno-exceptions
+    -fstack-usage
     )
 
 # Common C++ flags.
@@ -48,6 +49,7 @@ set(yaccs_CXX_COMMON_FLAGS
     -fno-rtti
     -fno-use-cxa-atexit
     -fno-threadsafe-statics
+    -fstack-usage
     )
 
 

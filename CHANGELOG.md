@@ -11,10 +11,11 @@ This is the changelog for the yaccs project. All notable changes to the project 
 ### Security
 
 
-## 2.2.1 - 2020-01-07
+## 2.2.1 - 2020-01-16
 
 ### Added
 - Add a CMake option to disable LTO for GCC ARM Embedded configurations.
+- Add `-fstack-usage` to C and C++ compiler flags for GCC ARM Embedded configurations.
 
 
 ## 2.2.0 - 2019-11-22
