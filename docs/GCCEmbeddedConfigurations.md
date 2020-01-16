@@ -14,6 +14,10 @@ List of configurations:
 Note that, the GCC ARM Embedded official binaries do not include any version numbers. Therefore the selection of a version is done by selecting a specific path using the `yaccs_compiler_paths` variable.
 
 
+## Disabling LTO ##
+By default LTO is enabled for Release and MinSizeRel build types. It can be disabled by defining the CMake option `yaccs_gcc_arm_disable_lto`. This option can be defined in the configuration user file (yaccs-user-config.cmake).
+
+
 ## Remarks ##
 * These configurations are designed for bare metal projects.
 * The latest version of the GCC ARM Embedded toolchain (8-2018-q4) suffers from various bugs (e.g. https://bugs.launchpad.net/gcc-arm-embedded/+bug/1814397) so the previous version (7-2018-q2) is currently recommended until a new version is released.

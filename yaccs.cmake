@@ -21,7 +21,7 @@ set(__yaccs_main_guard 1)
 
 
 # Version
-set("yaccs_VERSION" "2.2" CACHE STRING "yaccs version" FORCE)
+set("yaccs_VERSION" "2.2.1" CACHE STRING "yaccs version" FORCE)
 
 
 # Store script location.
