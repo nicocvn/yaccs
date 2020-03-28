@@ -15,9 +15,18 @@ Note that, the GCC ARM Embedded official binaries do not include any version num
 
 
 ## Disabling LTO ##
-By default LTO is enabled for Release and MinSizeRel build types. It can be disabled by defining the CMake option `yaccs_gcc_arm_disable_lto`. This option can be defined in the configuration user file (yaccs-user-config.cmake).
+By default LTO is enabled for Release and MinSizeRel build types. It can be disabled by defining the CMake option `yaccs_gcc_arm_disable_lto` to `ON`. This option can be defined in the configuration user file (yaccs-user-config.cmake) or pass to CMake directly. For example, adding the following to yaccs-user-config.cmake will disable LTO:
+
+```
+set(yaccs_gcc_arm_disable_lto ON)
+```
+
+
+## Enabling semi-hosting ##
+Semi-hosting can be enabled for all configurations supporting the GCC ARM Embedded toolchain. To enable semi-hosting the option `yaccs_gcc_arm_enable_semihosting` must be defined and set to `ON`. By default it is disabled.
+
+Note that, semi-hosting capabilities depend on the debug probe and targeted hardware, and that semi-hosting generally impact runtime performance. In addition, specifics software elements might be required for semi-hosting to function properly (see compiler documentation).
 
 
 ## Remarks ##
 * These configurations are designed for bare metal projects.
-* The latest version of the GCC ARM Embedded toolchain (8-2018-q4) suffers from various bugs (e.g. https://bugs.launchpad.net/gcc-arm-embedded/+bug/1814397) so the previous version (7-2018-q2) is currently recommended until a new version is released.

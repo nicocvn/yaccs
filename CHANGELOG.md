@@ -11,6 +11,12 @@ This is the changelog for the yaccs project. All notable changes to the project 
 ### Security
 
 
+## 2.2.2 - 2020-03-28
+
+### Added
+- Add a CMake option to enable semi-hosting for GCC ARM Embedded configurations.
+
+
 ## 2.2.1 - 2020-01-16
 
 ### Added
