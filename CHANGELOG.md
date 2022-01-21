@@ -1,4 +1,4 @@
-# Changelog #
+# Changelog
 This is the changelog for the yaccs project. All notable changes to the project should be documented here.
 
 
@@ -9,6 +9,12 @@ This is the changelog for the yaccs project. All notable changes to the project 
 ### Removed
 ### Fixed
 ### Security
+
+
+## 2.2.3 - 2022-01-21
+
+### Added
+- Ad support for Cortex-M configurations with C++17 support.
 
 
 ## 2.2.2 - 2020-03-28
