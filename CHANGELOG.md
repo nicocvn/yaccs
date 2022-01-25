@@ -11,10 +11,16 @@ This is the changelog for the yaccs project. All notable changes to the project 
 ### Security
 
 
+## 2.2.4 - 2022-01-25
+
+### Added
+- Add Linux and macOS configurations with C++17 support.
+
+
 ## 2.2.3 - 2022-01-21
 
 ### Added
-- Ad support for Cortex-M configurations with C++17 support.
+- Add support for Cortex-M configurations with C++17 support.
 
 
 ## 2.2.2 - 2020-03-28
