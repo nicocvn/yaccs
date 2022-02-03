@@ -16,10 +16,10 @@
 
 
 # Guard.
-if(DEFINED LINUX_CLANG8_CXX14_RTLIB)
+if(DEFINED LINUX_CLANG8_CXX17_RTLIB)
     return()
 endif()
-set(LINUX_CLANG8_CXX14_RTLIB 1)
+set(LINUX_CLANG8_CXX17_RTLIB 1)
 
 
 # Include base config.

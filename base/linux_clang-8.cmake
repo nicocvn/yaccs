@@ -49,7 +49,7 @@ include(${_yaccs_main_dir}/platform/linux.cmake)
 include(${_yaccs_main_dir}/compiler/clang-8.cmake)
 
 # Flags.
-include(${_yaccs_main_dir}/flags/clang-base-flags.cmake)
+include(${_yaccs_main_dir}/flags/clang-8-base-flags.cmake)
 #
 include(${_yaccs_main_dir}/flags/debug-levels.cmake)
 #

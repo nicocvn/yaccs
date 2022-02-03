@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------------- #
-# yaccs config file for macOS / gcc-8 / C++14 + static builds
+# yaccs config file for macOS / gcc-8 / C++17 + static builds
 #
 # Nicolas Clauvelin (n.clauvelin+code@gmail.com)
 # nicocvn.com, 2019
@@ -10,7 +10,7 @@
 # MANIFEST:
 #   Platform:       macOS
 #   Compiler:       gcc-8
-#   - Enable C++14
+#   - Enable C++17
 #   - Add static build features
 #   
 #   This configuration provides the ability to generate static build products on
@@ -21,10 +21,10 @@
 
 
 # Guard.
-if(DEFINED MACOS_GCC8_CXX14_STATIC)
+if(DEFINED MACOS_GCC8_CXX17_STATIC)
     return()
 endif()
-set(MACOS_GCC8_CXX14_STATIC 1)
+set(MACOS_GCC8_CXX17_STATIC 1)
 
 
 # Include base config.
