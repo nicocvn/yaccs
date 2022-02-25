@@ -9,9 +9,6 @@
 #
 # MANIFEST:
 #   These are the minimal flags for clang, covering all build types.
-#   Note that, Clang does not provide an equivalent to Os, so 02 is used.
-#   Ref: http://lists.llvm.org/pipermail/llvm-bugs/2018-January/061981.html
-#   Ref: https://github.com/android-ndk/ndk/issues/721
 #
 # ---------------------------------------------------------------------------- #
 
@@ -142,7 +139,7 @@ set(yaccs_C_MINSIZEREL_FLAGS
     # Architecture.
     -mfpmath=sse
     # Optimization.
-    -O2
+    -Oz
     -DNDEBUG
     )
 
@@ -152,7 +149,7 @@ set(yaccs_CXX_MINSIZEREL_FLAGS
     # Architecture.
     -mfpmath=sse
     # Optimization.
-    -O2
+    -Oz
     -DNDEBUG
     )
 

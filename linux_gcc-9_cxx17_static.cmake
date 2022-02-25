@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------------- #
-# yaccs config file for linux / gcc-9 / C++14 + static builds
+# yaccs config file for linux / gcc-9 / C++17 + static builds
 #
 # Nicolas Clauvelin (n.clauvelin+code@gmail.com)
 # nicocvn.com, 2019
@@ -16,10 +16,10 @@
 
 
 # Guard.
-if(DEFINED LINUX_GCC9_CXX14_STATIC)
+if(DEFINED LINUX_GCC9_CXX17_STATIC)
     return()
 endif()
-set(LINUX_GCC9_CXX14_STATIC 1)
+set(LINUX_GCC9_CXX17_STATIC 1)
 
 
 # Include base config.

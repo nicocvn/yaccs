@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------------- #
-# yaccs config file for linux / clang-8 / C++14
+# yaccs config file for linux / clang-8 / C++17
 #
 # Nicolas Clauvelin (n.clauvelin+code@gmail.com)
 # nicocvn.com, 2019
@@ -10,16 +10,16 @@
 # MANIFEST:
 #   Platform:       linux
 #   Compiler:       clang-8
-#   - Enable C++14
+#   - Enable C++17
 #
 # ---------------------------------------------------------------------------- #
 
 
 # Guard.
-if(DEFINED LINUX_CLANG8_CXX14)
+if(DEFINED LINUX_CLANG8_CXX17)
     return()
 endif()
-set(LINUX_CLANG8_CXX14 1)
+set(LINUX_CLANG8_CXX17 1)
 
 
 # Include base config.
