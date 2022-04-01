@@ -22,17 +22,24 @@ set(__yaccs_clang_base_flags 1)
 
 # --- Common flags ---
 
+# Handle Apple M1.
+if(yaccs_APPLE_M1)
+    set(march_FLAG -mcpu="apple-m1")
+else()
+    set(march_FLAG -march=${yaccs_DEFAULT_ARCH})
+endif()
+
 # Common C flags.
 set(yaccs_C_COMMON_FLAGS
     -fvisibility=hidden             # Symbols hidden by default.
     -fexceptions                    # Enable exception handling for C code.
-    -march=${yaccs_DEFAULT_ARCH}    # Default architecture.
+     ${march_FLAG}                  # Default architecture.
     )
 
 # Common C++ flags.
 set(yaccs_CXX_COMMON_FLAGS
     -fvisibility=hidden             # Symbols hidden by default.
-    -march=${yaccs_DEFAULT_ARCH}    # Default architecture.
+    ${march_FLAG}                  # Default architecture.
     )
 
 

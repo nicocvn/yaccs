@@ -25,6 +25,11 @@ set(yaccs_OSX_TARGET "10.13"
     CACHE STRING "macOS deployment target")
 
 
+# Apple Silicon M1 support.
+set(yaccs_APPLE_M1 OFF
+    CACHE BOOL "Enable Apple M1 support")
+
+
 # Visual Studio deployment target.
 # This is used to set:
 # - CMAKE_SYSTEM_VERSION

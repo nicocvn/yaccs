@@ -42,7 +42,8 @@ As show in the [example](docs/Example.md), yaccs provides the `yaccs_init_build_
 Several options can be customized by the user in the yaccs-user-config.cmake file (see the [example](docs/Example.md). In particular:
 
 * `yaccs_compiler_paths` can be set to a list of paths that will be searched to find the requested compiler (useful if the compiler is not in a standard location),
-* `yaccs_DEFAULT_ARCH` controls the target architecture used for the build process for GCC and Clang; it is by default set to `nehalem`.
+* `yaccs_DEFAULT_ARCH [STRING]` controls the target architecture used for the build process for GCC and Clang; it is by default set to `nehalem`.
+* `yaccs_APPLE_M1 [BOOL]` enables support for Apple M1 in Clang configurations (it is OFF by default).
 
 Other options are available for [macOS](docs/macOSConfigurations.md) and [Windows](docs/WindowsConfigurations.md) configurations
 
