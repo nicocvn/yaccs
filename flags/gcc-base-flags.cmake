@@ -26,13 +26,13 @@ set(__yaccs_gcc_base_flags 1)
 set(yaccs_C_COMMON_FLAGS
     -fvisibility=hidden             # Symbols hidden by default.
     -fexceptions                    # Enable exception handling for C code.
-    -march=${yaccs_DEFAULT_ARCH}   # Default architecture.
+    -march=${yaccs_DEFAULT_ARCH}    # Default architecture.
     )
 
 # Common C++ flags.
 set(yaccs_CXX_COMMON_FLAGS
     -fvisibility=hidden             # Symbols hidden by default.
-    -march=${yaccs_DEFAULT_ARCH}   # Default architecture.
+    -march=${yaccs_DEFAULT_ARCH}    # Default architecture.
     )
 
 

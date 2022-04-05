@@ -25,17 +25,26 @@ set(__yaccs_clang_8_base_flags 1)
 
 # --- Common flags ---
 
+# Handle Apple M1.
+if(yaccs_APPLE_M1)
+    set(march_FLAG -mcpu="apple-m1")
+    set(mfpmath_FLAG)
+else()
+    set(march_FLAG -march=${yaccs_DEFAULT_ARCH})
+    set(mfpmath_FLAG ${mfpmath_FLAG})
+endif()
+
 # Common C flags.
 set(yaccs_C_COMMON_FLAGS
     -fvisibility=hidden             # Symbols hidden by default.
     -fexceptions                    # Enable exception handling for C code.
-    -march=${yaccs_DEFAULT_ARCH}    # Default architecture.
+    ${march_FLAG}                   # Default architecture.
     )
 
 # Common C++ flags.
 set(yaccs_CXX_COMMON_FLAGS
     -fvisibility=hidden             # Symbols hidden by default.
-    -march=${yaccs_DEFAULT_ARCH}    # Default architecture.
+    ${march_FLAG}                   # Default architecture.
     )
 
 
@@ -94,7 +103,7 @@ set(yaccs_LINKER_DEBUG_FLAGS
 set(yaccs_C_RELEASE_FLAGS
     ${yaccs_C_COMMON_FLAGS}
     # Architecture.
-    -mfpmath=sse
+    ${mfpmath_FLAG}
     # Optimization.
     -O2
     -DNDEBUG
@@ -104,7 +113,7 @@ set(yaccs_C_RELEASE_FLAGS
 set(yaccs_CXX_RELEASE_FLAGS
     ${yaccs_CXX_COMMON_FLAGS}
     # Architecture.
-    -mfpmath=sse
+    ${mfpmath_FLAG}
     # Optimization.
     -O2
     -DNDEBUG
@@ -117,7 +126,7 @@ set(yaccs_CXX_RELEASE_FLAGS
 set(yaccs_C_RELWITHDEBINFO_FLAGS
     ${yaccs_C_COMMON_FLAGS}
     # Architecture
-    -mfpmath=sse
+    ${mfpmath_FLAG}
     # Optimization with debug symbols.
     -O2
     -DNDEBUG
@@ -127,7 +136,7 @@ set(yaccs_C_RELWITHDEBINFO_FLAGS
 set(yaccs_CXX_RELWITHDEBINFO_FLAGS
     ${yaccs_CXX_COMMON_FLAGS}
     # Architecture.
-    -mfpmath=sse
+    ${mfpmath_FLAG}
     # Optimization with debug symbols.
     -O2
     -DNDEBUG
@@ -140,7 +149,7 @@ set(yaccs_CXX_RELWITHDEBINFO_FLAGS
 set(yaccs_C_MINSIZEREL_FLAGS
     ${yaccs_C_COMMON_FLAGS}
     # Architecture.
-    -mfpmath=sse
+    ${mfpmath_FLAG}
     # Optimization.
     -O2
     -DNDEBUG
@@ -150,7 +159,7 @@ set(yaccs_C_MINSIZEREL_FLAGS
 set(yaccs_CXX_MINSIZEREL_FLAGS
     ${yaccs_CXX_COMMON_FLAGS}
     # Architecture.
-    -mfpmath=sse
+    ${mfpmath_FLAG}
     # Optimization.
     -O2
     -DNDEBUG

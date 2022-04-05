@@ -25,8 +25,10 @@ set(__yaccs_clang_base_flags 1)
 # Handle Apple M1.
 if(yaccs_APPLE_M1)
     set(march_FLAG -mcpu="apple-m1")
+    set(mfpmath_FLAG)
 else()
     set(march_FLAG -march=${yaccs_DEFAULT_ARCH})
+    set(mfpmath_FLAG ${mfpmath_FLAG})
 endif()
 
 # Common C flags.
@@ -98,7 +100,7 @@ set(yaccs_LINKER_DEBUG_FLAGS
 set(yaccs_C_RELEASE_FLAGS
     ${yaccs_C_COMMON_FLAGS}
     # Architecture.
-    -mfpmath=sse
+    ${mfpmath_FLAG}
     # Optimization.
     -O2
     -DNDEBUG
@@ -108,7 +110,7 @@ set(yaccs_C_RELEASE_FLAGS
 set(yaccs_CXX_RELEASE_FLAGS
     ${yaccs_CXX_COMMON_FLAGS}
     # Architecture.
-    -mfpmath=sse
+    ${mfpmath_FLAG}
     # Optimization.
     -O2
     -DNDEBUG
@@ -121,7 +123,7 @@ set(yaccs_CXX_RELEASE_FLAGS
 set(yaccs_C_RELWITHDEBINFO_FLAGS
     ${yaccs_C_COMMON_FLAGS}
     # Architecture
-    -mfpmath=sse
+    ${mfpmath_FLAG}
     # Optimization with debug symbols.
     -O2
     -DNDEBUG
@@ -131,7 +133,7 @@ set(yaccs_C_RELWITHDEBINFO_FLAGS
 set(yaccs_CXX_RELWITHDEBINFO_FLAGS
     ${yaccs_CXX_COMMON_FLAGS}
     # Architecture.
-    -mfpmath=sse
+    ${mfpmath_FLAG}
     # Optimization with debug symbols.
     -O2
     -DNDEBUG
@@ -144,7 +146,7 @@ set(yaccs_CXX_RELWITHDEBINFO_FLAGS
 set(yaccs_C_MINSIZEREL_FLAGS
     ${yaccs_C_COMMON_FLAGS}
     # Architecture.
-    -mfpmath=sse
+    ${mfpmath_FLAG}
     # Optimization.
     -Oz
     -DNDEBUG
@@ -154,7 +156,7 @@ set(yaccs_C_MINSIZEREL_FLAGS
 set(yaccs_CXX_MINSIZEREL_FLAGS
     ${yaccs_CXX_COMMON_FLAGS}
     # Architecture.
-    -mfpmath=sse
+    ${mfpmath_FLAG}
     # Optimization.
     -Oz
     -DNDEBUG
