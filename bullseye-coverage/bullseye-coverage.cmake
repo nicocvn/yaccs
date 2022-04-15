@@ -150,7 +150,7 @@ function(enable_bullseye_coverage_for_target)
     # Set bullseye coverage pre-compiler for main target and dependencies.
     _set_target_for_bullseye(TARGET ${cov_args_TARGET}
                              COVFILE ${bullseye_COVFILE}
-                             HOOK ${cov-args_TARGET}-bullseye-regions)
+                             HOOK ${cov_args_TARGET}-bullseye-regions)
     foreach(dep IN LISTS cov_args_DEPS)
         _set_target_for_bullseye(TARGET ${dep}
                                  COVFILE ${bullseye_COVFILE}
