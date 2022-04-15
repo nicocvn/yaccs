@@ -29,7 +29,7 @@ set(CMAKE_CONFIGURATION_TYPES "${CMAKE_CONFIGURATION_TYPES};Coverage"
 
 set(BuildType "DEBUG")
 if(ClangCoverageBuildType)
-  string(TOUPPER ${ClangCoverageBuildType} BuildType)
+    string(TOUPPER ${ClangCoverageBuildType} BuildType)
 endif()
 message(STATUS "(clang-cov) Using build type ${BuildType} for coverage")
 
@@ -60,7 +60,28 @@ yaccs_update_cache_var(CMAKE_SHARED_LINKER_FLAGS_COVERAGE
                        "-fprofile-instr-generate")
 
 
-# create_clang_cov_targers_for:
+function(create_clang_cov_targers_for)
+
+    # Define function interface.
+    set(options "")
+    set(one_value_args TARGET HTML_DIR EXCLUDE_REGEX)
+    set(multi_value_args DEPS)
+
+    # Parse arguments.
+    cmake_parse_arguments(clang_cov_args
+                          "${options}"
+                          "${one_value_args}"
+                          "${multi_value_args}" ${ARGN})
+
+    create_clang_cov_targets_for(TARGET ${clang_cov_args_TARGET}
+                                 HTML_DIR ${clang_cov_args_HTML_DIR}
+                                 EXCLUDE_REGEX ${clang_cov_args_EXCLUDE_REGEX}
+                                 DEPS "${clang_cov_args_EXCLUDE_DEPS}")
+
+endfunction()
+
+
+# create_clang_cov_targets_for:
 #   function to update a cache variable and add a new value to it
 #
 # \param TARGET:            target for which to enable code coverage
@@ -75,7 +96,7 @@ yaccs_update_cache_var(CMAKE_SHARED_LINKER_FLAGS_COVERAGE
 #     show coverage report in the console
 # - XXX-cov-html:
 #     create HTML coverage report
-function(create_clang_cov_targers_for)
+function(create_clang_cov_targets_for)
 
     # Define function interface.
     set(options "")

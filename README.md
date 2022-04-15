@@ -54,5 +54,7 @@ Other options are available for [macOS](docs/macOSConfigurations.md) and [Window
 * Yaccs support for MSVC (Visual Studio) is limited to version 15 and 16.
 
 
-## Clang-based coverage ##
+## Coverage ##
 Yaccs provides an easy to use CMake module to enable Clang-based code coverage analysis. [More information](clang-coverage/ClangCoverageDoc.md)
+
+In addition, a dedicated [module](bullseye-coverage/BullseyeCoverageDoc.md) is also provided to support the BullseyeCoverage tool.

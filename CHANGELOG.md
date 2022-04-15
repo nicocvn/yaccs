@@ -11,6 +11,42 @@ This is the changelog for the yaccs project. All notable changes to the project 
 ### Security
 
 
+# 2.5.0 - 2022-04-06
+
+### Added
+
+- Add CMake module to support coverage analysis using BullseyeCoverage tool.
+
+### Fixed
+
+- Fix typo in Clang coverage CMake module: `create_clang_cov_targers_for` is now replaced by `create_clang_cov_targets_for` (original function is still available).
+
+### Deprecated
+
+- `create_clang_cov_targers_for` in the CMake Clang coverage module; use `create_clang_cov_targets_for` instead.
+
+
+# 2.4.1 - 2022-04-06
+
+### Fixed
+
+- Fix issues with SSE in Clang configurations for Apple M1.
+
+
+## 2.4.0 - 2022-04-01
+
+### Added
+
+- Add configuration flag to support Apple M1 in Clang configurations.
+
+
+## 2.3.0 - 2022-02-24
+
+### Added
+
+- Add configurations to support LLVM Clang 13.0.0 compiler.
+
+
 ## 2.2.4 - 2022-01-25
 
 ### Added
