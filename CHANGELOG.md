@@ -11,6 +11,13 @@ This is the changelog for the yaccs project. All notable changes to the project 
 ### Security
 
 
+# 2.5.1 - 2022-04-06
+
+### Fixed
+
+- Fix typo in Bullseye region target.
+
+
 # 2.5.0 - 2022-04-06
 
 ### Added

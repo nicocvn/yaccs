@@ -140,7 +140,7 @@ function(enable_bullseye_coverage_for_target)
     file(RELATIVE_PATH region_DIR ${CMAKE_SOURCE_DIR} ${cov_args_COV_SRC_DIR})
 
     # Custom target for regions management.
-    add_custom_target(${cov-args_TARGET}-bullseye-regions
+    add_custom_target(${cov_args_TARGET}-bullseye-regions
                       COMMAND ${CMAKE_COMMAND} -E rm -f ${bullseye_COVFILE}
                       COMMAND ${COVSELECT_PROGRAM} --file ${bullseye_COVFILE} --deleteAll --no-banner
                       COMMAND ${COVSELECT_PROGRAM} --no-banner --file ${bullseye_COVFILE} --add "${region_DIR}/"
