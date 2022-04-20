@@ -23,10 +23,10 @@ find_program(COVC_PROGRAM covc
 find_program(COVSELECT_PROGRAM covselect
              REQUIRED)
 if(COVC_PROGRAM-NOTFOUND)
-    message(FATAL_ERROR "...")
+    message(FATAL_ERROR "Unable to locate Bullseye Coverage covc program")
 endif()
 if(COVSELECT_PROGRAM-NOTFOUND)
-    message(FATAL_ERROR "...")
+    message(FATAL_ERROR "Unable to locate Bullseye Coverage covselect program")
 endif()
 get_filename_component(BullseyeCov_DIR "${COVC_PROGRAM}" PATH)
 get_filename_component(BullseyeCov_DIR "${BullseyeCov_DIR}" PATH)
@@ -94,6 +94,7 @@ function(_set_target_for_bullseye)
 
     # Link against bullseye coverage library.
     target_link_libraries(${args_TARGET}
+                          PUBLIC
                           ${BullseyeCov_DIR}/lib/libcov.a)
 
     # Inject hook.
@@ -154,7 +155,7 @@ function(enable_bullseye_coverage_for_target)
     foreach(dep IN LISTS cov_args_DEPS)
         _set_target_for_bullseye(TARGET ${dep}
                                  COVFILE ${bullseye_COVFILE}
-                                 HOOK ${cov-args_TARGET}-bullseye-regions)
+                                 HOOK ${cov_args_TARGET}-bullseye-regions)
     endforeach(dep)
 
     # Pre-processing target.
