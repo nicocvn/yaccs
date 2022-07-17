@@ -2,7 +2,7 @@
 # yaccs config file for windows / cl / base
 #
 # Nicolas Clauvelin (n.clauvelin+code@gmail.com)
-# nicocvn.com, 2019
+# nicocvn.com, 2022
 #
 #
 # MODULE:   yaccs
@@ -10,9 +10,6 @@
 # MANIFEST:
 #   Platform:       windows
 #   Compiler:       cl
-#   
-#   This configuration is equivalent to a "standard" macOS configuration. It
-#   relies on the system compilers and simply adapt the flags.
 #
 # ---------------------------------------------------------------------------- #
 

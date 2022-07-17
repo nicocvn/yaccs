@@ -24,3 +24,5 @@ set(CMAKE_CXX_STANDARD "17"
     CACHE STRING "C++ language standard" FORCE)
 set(CMAKE_CXX_STANDARD_REQUIRED ON
     CACHE STRING "Enable C standard requirement" FORCE)
+set(CMAKE_CXX_EXTENSIONS OFF
+    CACHE BOOL "Enable/disable C++ extensions" FORCE)

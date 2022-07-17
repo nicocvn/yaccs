@@ -2,7 +2,7 @@
 # yaccs config file for windows / mingw gcc / base
 #
 # Nicolas Clauvelin (n.clauvelin+code@gmail.com)
-# nicocvn.com, 2019
+# nicocvn.com, 2022
 #
 #
 # MODULE:   yaccs
@@ -47,15 +47,11 @@ include(${_yaccs_main_dir}/compiler/mingw-gcc.cmake)
 
 # Flags.
 include(${_yaccs_main_dir}/flags/gcc-base-flags.cmake)
-#
 include(${_yaccs_main_dir}/flags/debug-levels.cmake)
-#
 include(${_yaccs_main_dir}/flags/LTO.cmake)
 include(${_yaccs_main_dir}/flags/dead-code.cmake)
 include(${_yaccs_main_dir}/flags/gcc-strip.cmake)
-#
-# Gold linker appears to be broken in MinGW ... linker flags are all over the
-# place.
-#include(${_yaccs_main_dir}/flags/gcc-gold-linker.cmake)
-#
-# Sanitizers are not available on windows.
+
+# Notes:
+# - Gold linker does not work on Windows
+# - MinGW GCC does not support sanitizers

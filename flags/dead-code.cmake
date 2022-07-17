@@ -2,7 +2,7 @@
 # yaccs / flags / dead-code
 #
 # Nicolas Clauvelin (n.clauvelin+code@gmail.com)
-# nicocvn.com, 2019
+# nicocvn.com, 2022
 #
 #
 # MODULE:   yaccs
@@ -15,20 +15,20 @@
 
 
 # Enable function and data sections for all build types except Debug.
-yaccs_update_cache_var(CMAKE_C_FLAGS_RELEASE "-ffunction-sections")
-yaccs_update_cache_var(CMAKE_C_FLAGS_RELEASE "-fdata-sections")
-yaccs_update_cache_var(CMAKE_CXX_FLAGS_RELEASE "-ffunction-sections")
-yaccs_update_cache_var(CMAKE_CXX_FLAGS_RELEASE "-fdata-sections")
+yaccs_update_cache_var(CMAKE_C_FLAGS_RELEASE_INIT "-ffunction-sections")
+yaccs_update_cache_var(CMAKE_C_FLAGS_RELEASE_INIT "-fdata-sections")
+yaccs_update_cache_var(CMAKE_CXX_FLAGS_RELEASE_INIT "-ffunction-sections")
+yaccs_update_cache_var(CMAKE_CXX_FLAGS_RELEASE_INIT "-fdata-sections")
 #
-yaccs_update_cache_var(CMAKE_C_FLAGS_RELWITHDEBINFO "-ffunction-sections")
-yaccs_update_cache_var(CMAKE_C_FLAGS_RELWITHDEBINFO "-fdata-sections")
-yaccs_update_cache_var(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-ffunction-sections")
-yaccs_update_cache_var(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-fdata-sections")
+yaccs_update_cache_var(CMAKE_C_FLAGS_RELWITHDEBINFO_INIT "-ffunction-sections")
+yaccs_update_cache_var(CMAKE_C_FLAGS_RELWITHDEBINFO_INIT "-fdata-sections")
+yaccs_update_cache_var(CMAKE_CXX_FLAGS_RELWITHDEBINFO_INIT "-ffunction-sections")
+yaccs_update_cache_var(CMAKE_CXX_FLAGS_RELWITHDEBINFO_INIT "-fdata-sections")
 #
-yaccs_update_cache_var(CMAKE_C_FLAGS_MINSIZEREL "-ffunction-sections")
-yaccs_update_cache_var(CMAKE_C_FLAGS_MINSIZEREL "-fdata-sections")
-yaccs_update_cache_var(CMAKE_CXX_FLAGS_MINSIZEREL "-ffunction-sections")
-yaccs_update_cache_var(CMAKE_CXX_FLAGS_MINSIZEREL "-fdata-sections")
+yaccs_update_cache_var(CMAKE_C_FLAGS_MINSIZEREL_INIT "-ffunction-sections")
+yaccs_update_cache_var(CMAKE_C_FLAGS_MINSIZEREL_INIT "-fdata-sections")
+yaccs_update_cache_var(CMAKE_CXX_FLAGS_MINSIZEREL_INIT "-ffunction-sections")
+yaccs_update_cache_var(CMAKE_CXX_FLAGS_MINSIZEREL_INIT "-fdata-sections")
 
 
 # Enable garbage collection in the linker.

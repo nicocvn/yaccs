@@ -2,7 +2,7 @@
 # yaccs config file for windows / cl / C++11
 #
 # Nicolas Clauvelin (n.clauvelin+code@gmail.com)
-# nicocvn.com, 2019
+# nicocvn.com, 2022
 #
 #
 # MODULE:   yaccs

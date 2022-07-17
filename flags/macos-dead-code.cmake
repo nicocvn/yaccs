@@ -2,7 +2,7 @@
 # yaccs / flags / macos code size flags
 #
 # Nicolas Clauvelin (n.clauvelin+code@gmail.com)
-# nicocvn.com, 2019
+# nicocvn.com, 2022
 #
 #
 # MODULE:   yaccs
@@ -16,17 +16,17 @@
 
 
 # Enable all debugging symbols for all build types.
-yaccs_update_cache_var(CMAKE_C_FLAGS_DEBUG "-gfull")
-yaccs_update_cache_var(CMAKE_CXX_FLAGS_DEBUG "-gfull")
+yaccs_update_cache_var(CMAKE_C_FLAGS_DEBUG_INIT "-gfull")
+yaccs_update_cache_var(CMAKE_CXX_FLAGS_DEBUG_INIT "-gfull")
 #
-yaccs_update_cache_var(CMAKE_C_FLAGS_RELEASE "-gfull")
-yaccs_update_cache_var(CMAKE_CXX_FLAGS_RELEASE "-gfull")
+yaccs_update_cache_var(CMAKE_C_FLAGS_RELEASE_INIT "-gfull")
+yaccs_update_cache_var(CMAKE_CXX_FLAGS_RELEASE_INIT "-gfull")
 #
-yaccs_update_cache_var(CMAKE_C_FLAGS_RELWITHDEBINFO "-gfull")
-yaccs_update_cache_var(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-gfull")
+yaccs_update_cache_var(CMAKE_C_FLAGS_RELWITHDEBINFO_INIT "-gfull")
+yaccs_update_cache_var(CMAKE_CXX_FLAGS_RELWITHDEBINFO_INIT "-gfull")
 #
-yaccs_update_cache_var(CMAKE_C_FLAGS_MINSIZEREL "-gfull")
-yaccs_update_cache_var(CMAKE_CXX_FLAGS_MINSIZEREL "-gfull")
+yaccs_update_cache_var(CMAKE_C_FLAGS_MINSIZEREL_INIT "-gfull")
+yaccs_update_cache_var(CMAKE_CXX_FLAGS_MINSIZEREL_INIT "-gfull")
 
 
 # Enable dead code stripping except for Debug.

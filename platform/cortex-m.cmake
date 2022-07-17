@@ -2,7 +2,7 @@
 # yaccs / platform / cortex-m
 #
 # Nicolas Clauvelin (n.clauvelin+code@gmail.com)
-# nicocvn.com, 2019
+# nicocvn.com, 2022
 #
 #
 # MODULE:   yaccs
@@ -18,7 +18,7 @@
 set(CMAKE_SYSTEM_NAME Generic)
 
 # CMAKE_SYSTEM_PROCESSOR
-set(CMAKE_SYSTEM_PROCESSOR arm)
+set(CMAKE_SYSTEM_PROCESSOR arm-cortex-${yaccs_cortex_variant})
 
 # Indicate that we are cross-compiling (executables cannot run on the host)
 set(CMAKE_CROSSCOMPILING TRUE)         # executables cannot run on the host

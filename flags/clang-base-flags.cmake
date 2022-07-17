@@ -2,7 +2,7 @@
 # yaccs / flags / clang-base-flags
 #
 # Nicolas Clauvelin (n.clauvelin+code@gmail.com)
-# nicocvn.com, 2019
+# nicocvn.com, 2022
 #
 #
 # MODULE:   yaccs
@@ -33,16 +33,10 @@ endif()
 
 # Common C flags.
 set(yaccs_C_COMMON_FLAGS
-    -fvisibility=hidden             # Symbols hidden by default.
-    -fexceptions                    # Enable exception handling for C code.
-     ${march_FLAG}                  # Default architecture.
-    )
+    -fexceptions)                   # Enable exception handling for C code.
 
 # Common C++ flags.
-set(yaccs_CXX_COMMON_FLAGS
-    -fvisibility=hidden             # Symbols hidden by default.
-    ${march_FLAG}                  # Default architecture.
-    )
+set(yaccs_CXX_COMMON_FLAGS)
 
 
 # --- Debug flags ---
@@ -63,8 +57,6 @@ set(yaccs_C_DEBUG_FLAGS
     -Wuninitialized
     -Wconversion
     -Wreturn-type
-    # Optimization.
-    -O0
     )
 
 # C++ debug flags.
@@ -85,12 +77,6 @@ set(yaccs_CXX_DEBUG_FLAGS
     -Wconversion
     -Wreturn-type
     -Weffc++
-    # Optimization.
-    -O0
-    )
-
-# Linker debug flags.
-set(yaccs_LINKER_DEBUG_FLAGS
     )
 
 
@@ -98,93 +84,61 @@ set(yaccs_LINKER_DEBUG_FLAGS
 
 # C release flags.
 set(yaccs_C_RELEASE_FLAGS
-    ${yaccs_C_COMMON_FLAGS}
-    # Architecture.
-    ${mfpmath_FLAG}
-    # Optimization.
-    -O2
-    -DNDEBUG
-    )
+    ${yaccs_C_COMMON_FLAGS})
 
 # C++ release flags.
 set(yaccs_CXX_RELEASE_FLAGS
-    ${yaccs_CXX_COMMON_FLAGS}
-    # Architecture.
-    ${mfpmath_FLAG}
-    # Optimization.
-    -O2
-    -DNDEBUG
-    )
+    ${yaccs_CXX_COMMON_FLAGS})
 
 
 # --- RelWithDebInfo flags ---
 
 # C release with debug info flags.
 set(yaccs_C_RELWITHDEBINFO_FLAGS
-    ${yaccs_C_COMMON_FLAGS}
-    # Architecture
-    ${mfpmath_FLAG}
-    # Optimization with debug symbols.
-    -O2
-    -DNDEBUG
-    )
+    ${yaccs_C_COMMON_FLAGS})
 
 # C++ release flags.
 set(yaccs_CXX_RELWITHDEBINFO_FLAGS
-    ${yaccs_CXX_COMMON_FLAGS}
-    # Architecture.
-    ${mfpmath_FLAG}
-    # Optimization with debug symbols.
-    -O2
-    -DNDEBUG
-    )
+    ${yaccs_CXX_COMMON_FLAGS})
 
 
 # --- MinSizeRel flags ---
 
 # C minimal size release flags.
 set(yaccs_C_MINSIZEREL_FLAGS
-    ${yaccs_C_COMMON_FLAGS}
-    # Architecture.
-    ${mfpmath_FLAG}
-    # Optimization.
-    -Oz
-    -DNDEBUG
-    )
+    ${yaccs_C_COMMON_FLAGS})
 
 # C++ minimal size release flags.
 set(yaccs_CXX_MINSIZEREL_FLAGS
-    ${yaccs_CXX_COMMON_FLAGS}
-    # Architecture.
-    ${mfpmath_FLAG}
-    # Optimization.
-    -Oz
-    -DNDEBUG
-    )
+    ${yaccs_CXX_COMMON_FLAGS})
 
 
 # --- Setup ---
 
 # Debug flags.
-yaccs_set_cache_var_from_list(CMAKE_C_FLAGS_DEBUG
+yaccs_set_cache_var_from_list(CMAKE_C_FLAGS_DEBUG_INIT
                                "${yaccs_C_DEBUG_FLAGS}")
 yaccs_set_cache_var_from_list(CMAKE_CXX_FLAGS_DEBUG
                                "${yaccs_CXX_DEBUG_FLAGS}")
 
 # Release flags.
-yaccs_set_cache_var_from_list(CMAKE_C_FLAGS_RELEASE
+yaccs_set_cache_var_from_list(CMAKE_C_FLAGS_RELEASE_INIT
                                "${yaccs_C_RELEASE_FLAGS}")
-yaccs_set_cache_var_from_list(CMAKE_CXX_FLAGS_RELEASE
+yaccs_set_cache_var_from_list(CMAKE_CXX_FLAGS_RELEASE_INIT
                                "${yaccs_CXX_RELEASE_FLAGS}")
 
 # RelWithDebInfo flags.
-yaccs_set_cache_var_from_list(CMAKE_C_FLAGS_RELWITHDEBINFO
+yaccs_set_cache_var_from_list(CMAKE_C_FLAGS_RELWITHDEBINFO_INIT
                                "${yaccs_C_RELWITHDEBINFO_FLAGS}")
-yaccs_set_cache_var_from_list(CMAKE_CXX_FLAGS_RELWITHDEBINFO
+yaccs_set_cache_var_from_list(CMAKE_CXX_FLAGS_RELWITHDEBINFO_INIT
                                "${yaccs_CXX_RELWITHDEBINFO_FLAGS}")
 
 # MinSizeRel flags.
-yaccs_set_cache_var_from_list(CMAKE_C_FLAGS_MINSIZEREL
+yaccs_set_cache_var_from_list(CMAKE_C_FLAGS_MINSIZEREL_INIT
                                "${yaccs_C_MINSIZEREL_FLAGS}")
-yaccs_set_cache_var_from_list(CMAKE_CXX_FLAGS_MINSIZEREL
+yaccs_set_cache_var_from_list(CMAKE_CXX_FLAGS_MINSIZEREL_INIT
                                "${yaccs_CXX_MINSIZEREL_FLAGS}")
+
+# Set visibility as hidden by default.
+yaccs_set_cache_var_from_list(CMAKE_C_VISIBILITY_PRESET hidden)
+yaccs_set_cache_var_from_list(CMAKE_CXX_VISIBILITY_PRESET hidden)

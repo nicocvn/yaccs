@@ -2,7 +2,7 @@
 # yaccs config file for macOS / AppleClang / C++14
 #
 # Nicolas Clauvelin (n.clauvelin+code@gmail.com)
-# nicocvn.com, 2019
+# nicocvn.com, 2022
 #
 #
 # MODULE:   yaccs

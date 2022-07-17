@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------------- #
-# yaccs config file for windows / mingw gcc / C++17
+# yaccs config file for linux / GCC / C++14
 #
 # Nicolas Clauvelin (n.clauvelin+code@gmail.com)
 # nicocvn.com, 2022
@@ -8,23 +8,23 @@
 # MODULE:   yaccs
 #
 # MANIFEST:
-#   Platform:       windows
-#   Compiler:       mingw gcc
-#   - Enable C++17
+#   Platform:       linux
+#   Compiler:       GCC
+#   - Enable C++14
 #
 # ---------------------------------------------------------------------------- #
 
 
 # Guard.
-if(DEFINED WINDOWS_MINGW_GCC_CXX17)
+if(DEFINED LINUX_GCC_CXX14)
     return()
 endif()
-set(WINDOWS_MINGW_GCC_CXX17 1)
+set(LINUX_GCC_CXX14 1)
 
 
 # Include base config.
 # The filename does the rest.
-include(${CMAKE_CURRENT_LIST_DIR}/base/windows_mingw-gcc.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/base/linux_gcc.cmake)
 
 # Load c++ standard.
 yaccs_load_std_cxx(${CMAKE_CURRENT_LIST_FILE})

@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------------- #
-# yaccs config file for macOS / AppleClang / base
+# yaccs config file for linux / clang / base
 #
 # Nicolas Clauvelin (n.clauvelin+code@gmail.com)
 # nicocvn.com, 2022
@@ -8,25 +8,23 @@
 # MODULE:   yaccs
 #
 # MANIFEST:
-#   Platform:       macOS
-#   Compiler:       AppleClang
+#   Platform:       linux
+#   Compiler:       clang
 #   - Minimal C/C++ flags for all build types.
-#   - Apply dead strip flags for all build types except Debug
-#   - Force usage of libc++
+#   - Apply dead code optimization to all build types except Debug
 #   - Enable LTO
-#   - Enable address and undefined behavior sanitizers for Debug build type
-#   
-#   This configuration is equivalent to a "standard" macOS configuration. It
-#   relies on the system compilers and simply adapt the flags.
+#   - Force lld linker
+#   - Enable address, undefined behavior, and leak sanitizers for Debug build
+#     type
 #
 # ---------------------------------------------------------------------------- #
 
 
 # Guard.
-if(DEFINED MACOS_APPLECLANG_BASE)
+if(DEFINED LINUX_CLANG_BASE)
     return()
 endif()
-set(MACOS_APPLECLANG_BASE 1)
+set(LINUX_CLANG_BASE 1)
 
 
 # yaccs module.
@@ -45,15 +43,19 @@ set(__yaccs_config_file_loaded 1)
 
 
 # Platform.
-include(${_yaccs_main_dir}/platform/macos.cmake)
+include(${_yaccs_main_dir}/platform/linux.cmake)
 
 # Compiler.
-include(${_yaccs_main_dir}/compiler/apple-clang.cmake)
+include(${_yaccs_main_dir}/compiler/clang.cmake)
 
 # Flags.
 include(${_yaccs_main_dir}/flags/clang-base-flags.cmake)
-include(${_yaccs_main_dir}/flags/libcxx.cmake)
+include(${_yaccs_main_dir}/flags/debug-levels.cmake)
+include(${_yaccs_main_dir}/flags/clang-lld-linker.cmake)
 include(${_yaccs_main_dir}/flags/LTO.cmake)
-include(${_yaccs_main_dir}/flags/macos-dead-code.cmake)
+include(${_yaccs_main_dir}/flags/dead-code.cmake)
+include(${_yaccs_main_dir}/flags/gcc-strip.cmake)
 include(${_yaccs_main_dir}/flags/sanitizer-address.cmake)
 include(${_yaccs_main_dir}/flags/sanitizer-undefined.cmake)
+include(${_yaccs_main_dir}/flags/sanitizer-leak.cmake)
+include(${_yaccs_main_dir}/flags/libcxx.cmake)
