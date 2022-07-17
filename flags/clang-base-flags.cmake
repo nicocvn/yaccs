@@ -118,7 +118,7 @@ set(yaccs_CXX_MINSIZEREL_FLAGS
 # Debug flags.
 yaccs_set_cache_var_from_list(CMAKE_C_FLAGS_DEBUG_INIT
                                "${yaccs_C_DEBUG_FLAGS}")
-yaccs_set_cache_var_from_list(CMAKE_CXX_FLAGS_DEBUG
+yaccs_set_cache_var_from_list(CMAKE_CXX_FLAGS_DEBUG_INIT
                                "${yaccs_CXX_DEBUG_FLAGS}")
 
 # Release flags.

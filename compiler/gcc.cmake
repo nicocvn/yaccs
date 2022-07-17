@@ -36,9 +36,17 @@ endif()
 
 # Look for GCC executables.
 find_program(_gcc_c_compiler ${_gcc_c_compiler_executable}
-             PATHS ${yaccs_compiler_paths})
+             PATHS ${yaccs_compiler_paths}
+             NO_DEFAULT_PATH)
 find_program(_gcc_cxx_compiler ${_gcc_cxx_compiler_executable}
-             PATHS ${yaccs_compiler_paths})
+             PATHS ${yaccs_compiler_paths}
+             NO_DEFAULT_PATH)
+if((NOT _gcc_c_compiler) OR (NOT _gcc_cxx_compiler))
+    find_program(_gcc_c_compiler ${_gcc_c_compiler_executable}
+                 PATHS ${yaccs_compiler_paths})
+    find_program(_gcc_cxx_compiler ${_gcc_cxx_compiler_executable}
+                 PATHS ${yaccs_compiler_paths})
+endif()
 
 # If executables cannot be located this is a fatal error.
 if((NOT _gcc_c_compiler) OR (NOT _gcc_cxx_compiler))

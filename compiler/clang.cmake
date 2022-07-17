@@ -37,9 +37,17 @@ endif()
 
 # Look for clang executables.
 find_program(_clang_c_compiler ${_clang_c_compiler_executable}
-             PATHS ${yaccs_compiler_paths})
+             PATHS ${yaccs_compiler_paths}
+             NO_DEFAULT_PATH)
 find_program(_clang_cxx_compiler ${_clang_cxx_compiler_executable}
-             PATHS ${yaccs_compiler_paths})
+             PATHS ${yaccs_compiler_paths}
+             NO_DEFAULT_PATH)
+if((NOT _clang_c_compiler) OR (NOT _clang_cxx_compiler))
+    find_program(_clang_c_compiler ${_clang_c_compiler_executable}
+                 PATHS ${yaccs_compiler_paths})
+    find_program(_clang_cxx_compiler ${_clang_cxx_compiler_executable}
+                 PATHS ${yaccs_compiler_paths})
+endif()
 
 # If executables cannot be located this is a fatal error.
 if((NOT _clang_c_compiler) OR (NOT _clang_cxx_compiler))

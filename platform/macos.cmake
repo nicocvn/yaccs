@@ -14,5 +14,5 @@
 
 
 # Set deployment target.
-set(CMAKE_OSX_DEPLOYMENT_TARGET "${yaccs_OSX_TARGET}"
-    CACHE STRING "macOS deployment target" FORCE)
+#set(CMAKE_OSX_DEPLOYMENT_TARGET "${yaccs_OSX_TARGET}"
+#    CACHE STRING "macOS deployment target" FORCE)

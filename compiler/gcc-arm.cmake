@@ -22,13 +22,24 @@ set(__yaccs_compilers_gcc-arm 1)
 
 # Look for GCC executables.
 find_program(_gcc_arm_c_compiler arm-none-eabi-gcc
-             PATHS ${yaccs_compiler_paths})
+             PATHS ${yaccs_compiler_paths}
+             NO_DEFAULT_PATH)
 find_program(_gcc_arm_cxx_compiler arm-none-eabi-g++
-             PATHS ${yaccs_compiler_paths})
+             PATHS ${yaccs_compiler_paths}
+             NO_DEFAULT_PATH)
+if((NOT _gcc_arm_c_compiler) OR (NOT _gcc_arm_cxx_compiler))
+    find_program(_gcc_arm_c_compiler arm-none-eabi-gcc
+                 PATHS ${yaccs_compiler_paths})
+    find_program(_gcc_arm_cxx_compiler arm-none-eabi-g++
+                 PATHS ${yaccs_compiler_paths})
+endif()
 
 # If executables cannot be located this is a fatal error.
 if((NOT _gcc_arm_c_compiler) OR (NOT _gcc_arm_cxx_compiler))
     yaccs_fatal_error_message("Cannot locate arm-none-eabi-gcc executables")
+else()
+    yaccs_status_message("GCC C compiler: ${_gcc_arm_c_compiler}")
+    yaccs_status_message("GCC C++ compiler: ${_gcc_arm_cxx_compiler}")
 endif()
 
 
